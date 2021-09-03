@@ -1,0 +1,466 @@
+/* general styles */
+body
+{
+    margin:0px;
+    background-color: #3B3C36;
+    background-color: #002147;
+    background-color: #36454f;
+    padding-bottom:100px;
+    font-family: 'Roboto', sans-serif;
+    width:100%;
+    
+    
+}
+#heading
+{
+    text-align:center;
+    text-transform: capitalize;
+
+}
+
+#todo
+{
+    margin:0px;
+    color:#FDD540;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 45px;
+}
+#app
+{
+    margin-top: 0px;
+    color:#C1C1C1;
+    font-family: 'Roboto', sans-serif;
+    font-stretch: extra-expanded;
+}
+/* hr rule */
+#top,#bottom
+{
+        height:0px;
+        border:none;
+        outline:none;
+        margin:0px;
+        border-bottom:solid 6px grey;
+        border-image: linear-gradient(45deg,#38ef7d,#11998e) 1 ;
+        color:white ;
+}
+/* input for adding tasks */
+#mobile-container-add form
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding:10px 0px;
+        
+        
+    }
+input
+{
+    color:white;
+    border : none;
+    border-bottom:solid 3px grey;
+    background-color: inherit;
+   
+}
+input[type=text] , textarea
+{
+    width:30%;
+    margin:20px 6px;
+}
+#select-div
+{
+    margin:30px 6px;
+    width:30%;
+}
+select
+{
+    color:gray;
+    border : none;
+    border-bottom:solid 3px grey;
+    background-color: inherit;
+    display: inline-block;
+    
+}
+.select-class
+{
+    width:49% ;
+   
+}
+select[name=priority]
+{
+    margin-left: auto;
+}
+option
+{
+    font-size:15px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    padding-left:100px;
+}
+textarea
+{   color:gray;
+    border : none;
+    border-bottom:solid 3px grey;
+    background-color: inherit;
+    resize: none;
+   
+}
+
+    input:focus , textarea:focus 
+    {
+        border:none;
+        outline:none;
+        border-bottom:solid 3px grey;
+        border-image: linear-gradient(45deg,#38ef7d,#11998e) 1 ;
+        color:white ;
+        
+    }
+    input::placeholder , textarea::placeholder
+    {
+       
+        color:gray ;
+        
+    }
+    input[type=date]
+    {
+        width:75%;
+        
+    }
+    input[type=date]::placeholder
+    {
+         padding-left:10px;
+    }
+    input:focus::placeholder , textarea:focus::placeholder,input[type=date]:focus
+    {
+       
+        color:#38ef7d ;
+        
+    }
+    label{
+        color:gray ;
+        color:#38ef7d ; 
+        width :30%;
+    }
+  
+/* add task button */
+#add-task
+{
+    padding:10px 15px;
+    background-color:#fce205;
+    font-family: 'Orbitron', sans-serif;
+    font-size:20px;
+    outline: none;
+    border:none ;
+    border-radius:4px;
+    margin-bottom:20px;
+}
+#add-task:hover{
+    background-color:#fdce2a;
+    transform: scale(1.1,1.1);
+}
+/* input for delete has display none */
+#delete-ids
+{
+    display:none;
+}
+#tasks-container
+{
+    display:flex;
+    flex-wrap: wrap;
+    padding-left:20px;
+    padding-right:20px;
+    justify-content: space-around;
+}
+.task-element
+{
+    width:40%;
+    
+}
+/* collapsible */
+
+.task-info-container
+{
+    margin-left :40px ;
+    color:white;
+}
+.collapsible
+{
+    color:white;
+   
+    padding:10px ;
+    border:none;
+    border-radius:4px;
+    outline :none;
+    cursor: pointer;
+    width:95%;
+    /* margin-left:20px; */
+    
+}
+.collapsible span{
+    pointer-events: none;
+    
+}
+.taskcontent
+{
+    display: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width:95%;
+    min-height:50px;
+    height:100px;
+    overflow-y: scroll;
+    background-color:cadetblue;
+    box-sizing: border-box;
+    padding:10px ;
+    
+}
+
+.active, .collapsible:hover {
+    background-color:#11998e;
+  }
+  .with-display-block 
+  {
+      display: block;
+  }
+.task
+{
+    text-align: left;
+}
+.Work
+{
+    background-color: blueviolet;
+}
+.Personal
+{
+    background-color:deeppink;
+}
+.School
+{
+    background-color:#0081b4;
+}
+
+.Miscellanious
+{
+    background-color:rgb(14, 143, 72) ;
+}
+.opaque
+{
+    opacity: .5;
+    background-color: red; 
+    text-decoration: line-through;
+    text-decoration-color:black;
+    text-decoration-thickness: 0.2em;
+  
+}
+/* dropdown color for sort and Priority */
+#sort-key > option , #priority option{
+    color :#002147;
+}
+/* checkbox for tasks displayed */
+.checkbox-container
+{
+    position: relative;
+    top:40px;
+}
+.checkbox-container input[type=checkbox]
+{
+    /* display:none; */
+    user-select: none;
+    cursor: pointer;
+
+    
+}
+.checkmark
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:25px;
+    width:25px;
+    background-color: #eee;
+}
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  .checkbox-container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  .checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  .checkbox-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .actions
+  {
+      width:80%;
+      display: flex;
+      justify-content: center;
+      margin-top:10px;
+  }
+  /* buttons */
+  button
+  {
+    border:none;
+    transition: transform 0.2s ;
+  }
+  #complete-button:hover,#delete-button:hover
+  {
+      transform: scale(1.2);
+  }
+  #complete-button
+  {
+      background-color: #0cf867;
+      font-family: 'Orbitron', sans-serif;
+      padding:5px;
+      
+      margin-right:20px;
+  }
+  #delete-button
+  {
+      background-color: red;
+    font-family: 'Orbitron', sans-serif;
+    padding:5px;
+
+  }
+  #delete-tasks
+  {
+      
+    background-color: red;
+    font-family: 'Orbitron', sans-serif;
+    padding:6px 12px;
+    font-size:16px;
+    margin-left:40px;
+  }
+  #delete-tasks:hover
+  {
+    background-color: rgb(255, 60, 0);
+    transform: scale(1.2,1.2);
+  }
+  
+  /* Spans inside task elements */
+  .collapsible span
+  {
+      font-size: 14px;
+      font-weight:500;
+      /* color:red; */
+  }
+  
+  span#status , span#category ,span#priority
+  {
+    font-family: 'Orbitron', sans-serif;
+    
+  }
+  
+  #task-name
+  {
+      font-weight: 600;
+      color:white;
+      
+      font-size: 18px;
+      
+  }
+  .category-span ,span#priority
+  {
+      
+      margin-right:10px;
+      float:right;
+     
+   
+  }
+  
+  
+  /* status class */
+  .green
+  {
+      color:#0cf867;
+
+  }
+  .yellow
+  {
+      color:#fdce2a
+  }
+  /* sorting block */
+  
+  #sort-options form{
+      margin-top:20px;
+      margin-bottom: 25px;
+      width:100%;
+      display:flex;
+      justify-content: center;
+  }
+  button#sort-button
+  {
+      padding:6px 12px;
+      font-size:16px;
+      font-family: 'Orbitron', sans-serif;
+      background-color:#05be4c;
+      margin-left:40px;
+  }
+  button#sort-button:hover
+  {
+    background-color: #50ff93;
+      transform: scale(1.2,1.2);
+     
+  }
+  #sort-options select
+  {
+      width:25%;
+  }
+
+@media screen and (max-width :768px ) {
+     /* sorting block  */
+     input[type=text] , textarea
+     {
+         width:80%;
+         margin:20px 6px;
+     }
+     label
+     {
+         width:80%;
+     }
+     input[type=date]
+     {
+         width:80%;
+         
+     }
+     #select-div
+ {
+     margin:30px 6px;
+     width:80%;
+ }
+ 
+      #tasks-container
+      {
+          width:80%;
+          display:flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          padding-left:20px;
+          padding-right:20px;
+          align-items:center;
+      }
+      .task-info-container
+      {
+          width: 100%;;
+      }
+      .task-element
+      {
+          width:100%;
+      }
+    } 
+    
+   
+    

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/homepage.css">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;533&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;533;698&family=Roboto&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Heading -->
+    <div id="heading">
+        <h2 id="todo">todo</h2>
+        <h2 id="app">A &nbsp;p&nbsp; p</h2>
+    </div>
+    <hr id='top'>
+    <!-- adding a new tasl functionality -->
+    <div id="mobile-container-add">
+        <form action="/add-task" method="POST">
+            <input type="text" placeholder="Task" name="task" class="" required>
+
+            <textarea name="description" id="description" cols="30" rows="5" placeholder="task Descricption" class=" "
+                value=""></textarea>
+            <br>
+            <label for="duedate">Due Date: <input type="date" name="duedate" id="duedate" required></label>
+            <div id="select-div">
+                <select name="category" class="select-class" value="" id="category" required>
+                    <option value="" disabled selected hidden>Category</option>
+                    <option value="Personal" style="color:deeppink">Personal</option>
+                    <option value="Work" style="color:blueviolet">Work</option>
+                    <option value="School" style="color:#0081b4">School</option>
+                    <option value="Miscellanious" style="color:rgb(35, 133, 136)">Miscellanious</option>
+                </select>
+                <select name="priority" class="select-class" value="" id="priority">
+                    <option value="Priority" disabled selected hidden>Priority</option>
+                    <option value="low">low</option>
+                    <option value="normal">normal</option>
+                    <option value="urgent">urgent</option>
+                </select>
+            </div>
+            <button type="submit" id="add-task">Add Task</button>
+        </form>
+        <hr id='bottom'>
+        
+    </div>
+    <!-- sorting block with multiple  delete button  -->
+    <div id="sort-options">
+        <form action="/sort" method="POST"><select name="sortkey" id="sort-key">
+                
+                <option>Completed</option>
+                <option>Pending</option>
+                <option>By Due Date</option>
+
+            </select>
+            <button type="submit" id="sort-button">Sort By</button>
+        </form>
+        <!-- multiple delete -->
+        <form action="/delete-tasks" method="POST" id="delete-button-form">
+            <input type="text" id="delete-ids" name="key">
+            <button id="delete-tasks" type="submit">Delete Tasks</button>
+        </form>
+
+    </div>
+    
+    <!-- display tasks -->
+    <div id="tasks-container">
+        <% for ( let var_task of tasks_content ) { %>
+            <!-- checkbox for selecting tasks -->
+            <div class="task-element">
+
+                <label class="checkbox-container">
+                    <input type="checkbox" value="<%=var_task.id %>">
+                    <span class="checkmark"></span>
+                </label>
+
+                <div class="task-info-container">
+                    <button class="collapsible task">
+                        <!-- information displayed -->
+
+                        <span id="task-name">
+                            <%=var_task.task %>
+
+                        </span>
+                        <span id="priority">
+                            <%=var_task.priority %>
+                        </span>
+                        <br>
+                        <span id="status">
+                            <%=var_task.status %>
+                        </span> <span id="category" class="category-span">
+                            <%=var_task.category %>
+                        </span>
+                        <br>
+                        <span>
+                            <img src="./icons/due-date.png" alt="due date icon" style="width:25px;vertical-align:-5px">
+                            <%=var_task.dueDate.toDateString(); %>
+                        </span>
+                    </button>
+                    <!-- Accordion  -->
+                    <div class="taskcontent">descricption <%=var_task.description %>
+                    </div>
+                    <div class="actions">
+                        <button id="complete-button"
+                            onclick="window.location.href='/update-complete-status/?id=<%=var_task.id %>'">mark
+                            complete</button>
+                        <button id="delete-button"
+                            onclick="window.location.href='/delete-task/?id=<%=var_task.id %>'">delete task</button>
+                    </div>
+                </div>
+            </div>
+            <% }%>
+    </div>
+
+
+    <!-- bootstrap plugin -->
+    
+    <!-- my js code -->
+  
+    <script src="./javascript/homepage.js"></script>
+</body>
+
+</html>
